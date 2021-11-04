@@ -18,24 +18,27 @@ struct ContentView: View {
         db = Firestore.firestore()
     }
     
+    private func saveTask(task: Task) {
+        do {
+            _ = try db.collection("tasks").addDocument(from: task) {err in
+                if let err = err {
+                    print(err.localizedDescription)
+                } else {
+                    print("Document has been saved")
+                }
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
     var body: some View {
         VStack{
             TextField("Enter Task", text: $title)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             Button("Save") {
                 let task = Task(title: title)
-                do {
-                    _ = try db.collection("tasks").addDocument(from: task) {err in
-                        if let err = err {
-                            print(err.localizedDescription)
-                        } else {
-                            print("Document has been saved")
-                        }
-                    }
-                } catch let error {
-                    print(error.localizedDescription)
-                }
-                //                db.collection("tasks").addDocument(data: ["Test": "Data"])
+                saveTask(task: task)
             }
             Spacer()
         }.padding()
