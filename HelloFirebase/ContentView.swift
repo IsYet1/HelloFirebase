@@ -13,6 +13,7 @@ import simd
 struct ContentView: View {
     private var db: Firestore
     @State private var title: String = ""
+    @State private var tasks: [Task] = []
     
     init() {
         db = Firestore.firestore()
@@ -32,6 +33,22 @@ struct ContentView: View {
         }
     }
     
+    private func fetchAllTasks() {
+        db.collection("tasks")
+            .getDocuments { (snapshot, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else {
+                    if let snapshot = snapshot {
+                        tasks = snapshot.documents.compactMap { doc in
+                            return try? doc.data(as: Task.self)
+                        }
+                    }
+                }
+                
+            }
+    }
+    
     var body: some View {
         VStack{
             TextField("Enter Task", text: $title)
@@ -40,7 +57,14 @@ struct ContentView: View {
                 let task = Task(title: title)
                 saveTask(task: task)
             }
+            List(tasks, id: \.title) { task in
+                Text(task.title)
+            }
             Spacer()
+            
+            .onAppear(perform:  {
+                fetchAllTasks()
+            })
         }.padding()
     }
 }
