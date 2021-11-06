@@ -8,7 +8,7 @@
 import SwiftUI
 import Firebase
 import FirebaseFirestoreSwift
-import simd
+//import simd
 
 struct ContentView: View {
     private var db: Firestore
@@ -69,25 +69,31 @@ struct ContentView: View {
     }
     
     var body: some View {
-        VStack{
-            TextField("Enter Task", text: $title)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            Button("Save") {
-                let task = Task(title: title)
-                saveTask(task: task)
-            }
-            List {
-                ForEach(tasks, id: \.title) { task in
-                    Text(task.title)
+        NavigationView {
+            VStack{
+                TextField("Enter Task", text: $title)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                Button("Save") {
+                    let task = Task(title: title)
+                    saveTask(task: task)
                 }
-                .onDelete(perform: deleteTask)
-            }
-            Spacer()
-            
-            .onAppear(perform:  {
-                fetchAllTasks()
-            })
-        }.padding()
+                List {
+                    ForEach(tasks, id: \.id) { task in
+                        NavigationLink(
+                            destination: TaskDetailView(task: task) ){
+                            Text(task.title)
+                        }
+                    }
+                    .onDelete(perform: deleteTask)
+                }.listStyle(PlainListStyle())
+                Spacer()
+                
+                .onAppear(perform:  {
+                    fetchAllTasks()
+                })
+            }.padding()
+                .navigationTitle("Tasks")
+        }
     }
 }
 

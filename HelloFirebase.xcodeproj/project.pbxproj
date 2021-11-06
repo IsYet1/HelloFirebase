@@ -19,6 +19,7 @@
 		F6A0A249273350390091D1DA /* FirebaseDatabaseSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = F6A0A248273350390091D1DA /* FirebaseDatabaseSwift-Beta */; };
 		F6A0A24B273350390091D1DA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F6A0A24A273350390091D1DA /* FirebaseFirestore */; };
 		F6A0A24D273350390091D1DA /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = F6A0A24C273350390091D1DA /* FirebaseFirestoreSwift-Beta */; };
+		F6FB063A2736ED33002E8DCD /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FB06392736ED33002E8DCD /* TaskDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		F6A0A023272F28EE0041ED39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F6A0A026272F28EE0041ED39 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F6A0A02D272F2CD10041ED39 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F6FB06392736ED33002E8DCD /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				F6A0A02D272F2CD10041ED39 /* GoogleService-Info.plist */,
 				F6A0A01F272F28EE0041ED39 /* HelloFirebaseApp.swift */,
 				F6A0A021272F28EE0041ED39 /* ContentView.swift */,
+				F6FB06392736ED33002E8DCD /* TaskDetailView.swift */,
 				F6A0A023272F28EE0041ED39 /* Assets.xcassets */,
 				F6A0A025272F28EE0041ED39 /* Preview Content */,
 			);
@@ -183,6 +186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6FB063A2736ED33002E8DCD /* TaskDetailView.swift in Sources */,
 				F6A0A022272F28EE0041ED39 /* ContentView.swift in Sources */,
 				F64624CE2733495A000EA8CF /* Task.swift in Sources */,
 				F6A0A020272F28EE0041ED39 /* HelloFirebaseApp.swift in Sources */,
